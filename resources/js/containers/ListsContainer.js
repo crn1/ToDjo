@@ -7,7 +7,7 @@ import {Lists} from '../components/Lists';
 class ListsContainer extends React.Component {
 	render() {
 		return (
-			<Lists lists={this.state.lists} />
+			<Lists lists={this.props.lists} />
 		);
 	}
 }
