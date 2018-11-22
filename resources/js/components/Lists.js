@@ -11,7 +11,7 @@ export const Lists = (props) => {
 						<ListContainer
 							key={i}
 							index={i}
-							title={list.title} 
+							title={list.get('title')} 
 						/>
 					</Grid> 
 				) }

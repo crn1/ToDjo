@@ -1,49 +1,26 @@
-const initialState = {addValue: '', items: []};
+import { List, Map } from 'immutable';
 
-const CheckListaReducer = (state = initialState, action) => {
+const initialState = List(Map({
+	addValue: '', 
+	items: [],
+}));
+
+const TodoReducer = (state = initialState, action) => {
 	switch (action.type) {
-		case 'CHANGE_VALUE':
-			return { ...state,
-				items: {
-					...state.items,
-					[action.key]: {
-						...state.items[action.key],
-						value: action.value
-					}
-				}
-			};	
-		case 'CHANGE_CHECKED':
-			return { ...state,
-				items: {
-					...state.items,
-					[action.key]: {
-						...state.items[action.key],
-						checked: !action.checked
-					}
-				}
-			};	
-		case 'ADD_ITEM':
-			return { ...state,
-				items:
-				[
-					...state.items, 
-					{
-						value: action.value,
-						checked: false
-					}
-				],
-				addValue: ''
-			};	
-		case 'REMOVE_ITEM':
-			return {...state,
-				items: state.items.filter(item => item.id !== action.key)	
-			};	
+		/*case 'CHANGE_VALUE':
 
-		case 'CHANGE_ADD_VALUE':
-			return {...state, addValue: action.value};	
+		case 'CHANGE_CHECKED':*/
+
+		case 'ADD_ITEM':
+			return state.items.push(Map(action.title ));
+
+		/*case 'REMOVE_ITEM':
+
+		case 'CHANGE_ADD_VALUE':*/
+
 		default:
 			return state;
 	}
 }
 
-export default CheckListaReducer;
+export default TodoReducer;

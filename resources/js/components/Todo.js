@@ -18,14 +18,14 @@ export const Todo = (props) =>
 								key={i}
 								index={i}
 								onChange={(e) => props.changeChecked(e.target.checked)}
-								checked={item.checked}
+								checked={item.get('checked')}
 							/>
 							<input
 								key={i}
 								index={i}
 								onChange={(e) => props.changeValue(e.target.index, e.target.value)}
 								type="text"
-								value={item.value}
+								value={item.get('value')}
 								style={{border: '0'}}
 							/>
 							<Button stlye={{float: 'right'}}

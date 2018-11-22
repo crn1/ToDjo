@@ -8,13 +8,13 @@ export const List = (props) => {
 	return (
 		<Card>
 			<CardContent>
-				<Typography gutterBottom variant="h5" component="h2">
+				<Typography gutterBottom>
 				<input
 					index={props.index}
 					type="text"
 					value={props.title}
 					onChange={e => props.changeTitle(e.target.getAttribute('index'), e.target.value)}
-					style={{border: '0'}}
+					style={{border: 0, fontSize: 20, }}
 				/>
 				</Typography>
 				<TodoContainer />
