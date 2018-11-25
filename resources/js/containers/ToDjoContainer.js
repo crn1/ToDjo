@@ -20,8 +20,8 @@ const mapStateToProps = (state) => {
 	
 const mapDispatchToProps = (dispatch) => {
 	return {
-		addList: (value) => {
-			dispatch(addList(value));	
+		addList: (title) => {
+			dispatch(addList(title));	
 		},
 	};
 };

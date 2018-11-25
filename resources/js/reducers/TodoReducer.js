@@ -1,22 +1,47 @@
 import { List, Map } from 'immutable';
 
-const initialState = List(Map({
-	addValue: '', 
-	items: [],
-}));
+const initialState = Map({
+	items: List(),
+});
 
 const TodoReducer = (state = initialState, action) => {
 	switch (action.type) {
-		/*case 'CHANGE_VALUE':
+		case 'CHANGE_VALUE':
+			return state.setIn(
+				['items', action.index, 'value'],
+				action.value);
 
-		case 'CHANGE_CHECKED':*/
+		case 'CHANGE_CHECKED':
+			return state.setIn(
+				['items', action.index, 'checked'],
+				action.checked);
 
 		case 'ADD_ITEM':
-			return state.items.push(Map(action.title ));
+			return state.updateIn(['items'],
+				item => item.push(Map({
+					value: action.value,
+					checked: false,
+					listId: action.listId
+				}))	
+			);
 
-		/*case 'REMOVE_ITEM':
+		case 'REMOVE_ITEM':
+			return state.deleteIn(['items', action.index])
 
-		case 'CHANGE_ADD_VALUE':*/
+		case 'REMOVE_LIST':
+			var temp = state.get('items').filter(item => {
+				if(action.index !== item.get('listId')){
+					return item;
+				}	
+			}).map(item => {
+				if(item.get('listId') > action.index)	
+				{
+					return item.set('listId', item.get('listId') - 1);	
+				}else{
+					return item;	
+				}
+			});
+			return state.set('items', temp);
 
 		default:
 			return state;

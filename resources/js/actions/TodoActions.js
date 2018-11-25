@@ -1,36 +1,31 @@
-export function changeValue(key, value) {
+export function changeValue(index, value) {
 	return {
 		type: 'CHANGE_VALUE',
-		key,
+		index,
 		value
 	};
 }
 
-export function changeChecked(key, checked) {
+export function changeChecked(index, checked) {
 	return {
 		type: 'CHANGE_CHECKED',
-		key,
+		index,
 		checked
 	};
 }
 
-export function addItem(value) {
+export function addItem(value, listId) {
 	return {
 		type: 'ADD_ITEM',
-		value
+		value,
+		listId
 	};
 }
 
-export function removeItem(key) {
+export function removeItem(index) {
 	return {
 		type: 'REMOVE_ITEM',
-		key
+		index
 	};
 }
 
-export function changeAddValue(value) {
-	return {
-		type: 'CHANGE_ADD_VALUE',
-		value
-	};
-}

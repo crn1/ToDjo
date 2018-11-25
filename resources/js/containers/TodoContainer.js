@@ -1,8 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { changeValue, changeChecked, addItem, removeItem, changeAddValue } from '../actions/TodoActions';
-
-import {Todo} from '../components/Todo';
+import { changeValue, changeChecked, addItem, removeItem} from '../actions/TodoActions';
+import { List, Map } from 'immutable'; 
+import { Todo } from '../components/Todo';
 
 class TodoContainer extends React.Component {
 	constructor(props)
@@ -18,9 +18,9 @@ class TodoContainer extends React.Component {
 				changeChecked={this.props.changeChecked}
 				addItem={this.props.addItem}
 				removeItem={this.props.removeItem}
-				changeAddValue={this.props.changeAddValue}
-				addValue={this.props.todo.addValue}
-				items={this.props.todo.items}
+				addValue={this.props.todo.get('addValue')}
+				items={this.props.todo.get('items')}
+				listId={this.props.listId}
 			/>	
 		);	
 	}
@@ -37,21 +37,18 @@ const mapDispatchToProps = (dispatch) => {
 		changeValue: (index, value) => {
 			dispatch(changeValue(index, value));	
 		},
-		changeChecked: (checked) => {
-			dispatch(changeChecked(checked));	
+		changeChecked: (index, checked) => {
+			dispatch(changeChecked(index, checked));	
 		},
-		addItem: (value) => {
+		addItem: (value, listId) => {
 			if(value != '')
 			{
-				dispatch(addItem(value));	
+				dispatch(addItem(value, listId));	
 			}
 		},
 		removeItem: (index) => {
 			dispatch(removeItem(index));	
 		},
-		changeAddValue: (value) => {
-			dispatch(changeAddValue(value));	
-		}
 	};
 };
 

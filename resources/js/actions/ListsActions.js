@@ -19,3 +19,11 @@ export function changeTitle(index, title) {
 		title
 	};
 }
+
+export function changeAddValue(index, value) {
+	return {
+		type: 'CHANGE_ADD_VALUE',
+		index,
+		value
+	};
+}
